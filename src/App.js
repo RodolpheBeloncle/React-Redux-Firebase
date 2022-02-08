@@ -1,11 +1,13 @@
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <header className="App-header">
-        <h1>Mario React-Redux</h1>
+        <Navbar />
       </header>
-    </div>
+    </BrowserRouter>
   );
 }
 
