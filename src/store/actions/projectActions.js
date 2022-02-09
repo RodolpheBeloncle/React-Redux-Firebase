@@ -6,8 +6,8 @@ export const createProject = (project) => {
       .collection('projects')
       .add({
         ...project,
-        authorFirstName: 'Net',
-        authorLastName: 'Ninja',
+        authorFirstName: 'Rodolphe',
+        authorLastName: 'Beloncle',
         authorId: 12345,
         createAt: new Date(),
       })
