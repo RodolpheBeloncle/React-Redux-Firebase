@@ -4,7 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 const ProjectDetails = (props) => {
-  const { project,date } = props;
+  const { project, date } = props;
   if (project) {
     return (
       <div className="container section project-details">
@@ -30,35 +30,23 @@ const ProjectDetails = (props) => {
       </div>
     );
   }
-
-  // const releaseDate = new Date(
-  //   project[id].createAt.seconds * 1000 +
-  //     project[id].createAt.nanoseconds / 1000
-  // )
-  //   .toLocaleDateString(undefined, {
-  //     year: 'numeric',
-  //     month: 'long',
-  //     day: 'numeric',
-  //   })
-  //   .toString();
 };
 
 const mapStateToProps = (state, { match }) => {
   const selectedProjectid = match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[selectedProjectid] : null;
-  console.log(projects)
-  const date =   new Date(
+  const date = new Date(
     projects[selectedProjectid].createAt.seconds * 1000 +
       projects[selectedProjectid].createAt.nanoseconds / 1000
-  ).toLocaleDateString(undefined, {
+  )
+    .toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     })
-    .toString() ;
+    .toString();
 
-  console.log("date",date)
   return {
     project: project,
     date: date,
