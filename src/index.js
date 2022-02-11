@@ -15,16 +15,19 @@ const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(fbConfig, { attachAuthIsready: true }), // redux binding for firebase
+    reactReduxFirebase(fbConfig, {
+      useFirestoreForProfile: true,
+      userProfile: 'users',
+      attachAuthIsready: true,
+    }), // redux binding for firebase
     reduxFirestore(fbConfig) // redux bindings for firestore
   )
 );
 
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  );
-  registerServiceWorker();
-
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+registerServiceWorker();

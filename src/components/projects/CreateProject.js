@@ -12,6 +12,7 @@ class CreateProject extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createProject(this.state);
+    this.props.history.push('/');
   };
 
   render() {
@@ -20,7 +21,7 @@ class CreateProject extends Component {
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Sign In</h5>
+          <h5 className="grey-text text-darken-3">Cretae new project</h5>
           <div className="input-field">
             <label htmlFor="title">title</label>
             <input
